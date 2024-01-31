@@ -1,0 +1,4 @@
+name: LobbyManager
+version: '${project.version}'
+main: fr.romain.manager.lobby.lobbymanager.LobbyManager
+api-version: '1.20'
