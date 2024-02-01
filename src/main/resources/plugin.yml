@@ -1,4 +1,6 @@
 name: LobbyManager
 version: '${project.version}'
-main: fr.romain.manager.lobby.lobbymanager.LobbyManager
+main: fr.romain.manager.lobby.Core
 api-version: '1.20'
+commands:
+  joinrush:

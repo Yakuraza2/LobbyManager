@@ -12,8 +12,10 @@ public final class Core extends JavaPlugin {
         saveDefaultConfig();
         dataFolder = getDataFolder();
 
-        this.getServer().getMessenger().registerIncomingPluginChannel(this, "BungeeCord", new PluginMessageManager());
+        this.getServer().getMessenger().registerIncomingPluginChannel(this, "romain:rush", new PluginMessageManager());
+        this.getServer().getMessenger().registerOutgoingPluginChannel(this, "romain:rush");
         this.getServer().getMessenger().registerOutgoingPluginChannel(this, "BungeeCord");
+        getCommand("joinrush").setExecutor(new Commands(this));
     }
 
     @Override
