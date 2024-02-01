@@ -12,11 +12,14 @@ public final class Core extends JavaPlugin {
         saveDefaultConfig();
         dataFolder = getDataFolder();
 
+        this.getServer().getMessenger().registerIncomingPluginChannel(this, "BungeeCord", new PluginMessageManager());
+        this.getServer().getMessenger().registerOutgoingPluginChannel(this, "BungeeCord");
     }
 
     @Override
     public void onDisable() {
-        // Plugin shutdown logic
+        this.getServer().getMessenger().unregisterOutgoingPluginChannel(this);
+        this.getServer().getMessenger().unregisterIncomingPluginChannel(this);
     }
 
     public static File getPluginDataFolder() { return dataFolder; }
