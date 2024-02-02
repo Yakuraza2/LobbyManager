@@ -1,20 +1,17 @@
-package fr.romain.manager.lobby;
+package fr.romain.manager.lobby.managers;
 
 import com.google.common.collect.Iterables;
 import com.google.common.io.ByteArrayDataInput;
 import com.google.common.io.ByteArrayDataOutput;
 import com.google.common.io.ByteStreams;
+import fr.romain.manager.lobby.Core;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 import org.bukkit.plugin.messaging.PluginMessageListener;
 
-import java.util.HashMap;
-
 import static fr.romain.manager.lobby.Core.logger;
 
 public class PluginMessageManager implements PluginMessageListener {
-
-    public static HashMap<Player, String> playerServer =  new HashMap<>();
 
     @Override
     public void onPluginMessageReceived(String channel, Player player, byte[] message) {
@@ -36,10 +33,13 @@ public class PluginMessageManager implements PluginMessageListener {
             }
             if(response.equalsIgnoreCase("YES")){
                 connectToServer(playerToConnect, server);
-                logger("Connecting " + playerToConnect + " to " + playerServer.get(playerToConnect));
+                logger("Connecting " + playerToConnect + " to " + server);
+
+                WaitingListManager.connectFirstPlayer(server);
+
             }else{
-                playerToConnect.sendMessage("&bVous êtes actuellement en file d'attente");
-                logger(playerToConnect.getDisplayName() + " is now in waiting queue.");
+                logger("Server " + server + " is full !");
+                return;
             }
 
         }

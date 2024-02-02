@@ -1,5 +1,6 @@
-package fr.romain.manager.lobby;
+package fr.romain.manager.lobby.managers;
 
+import fr.romain.manager.lobby.Core;
 import org.bukkit.Location;
 import org.bukkit.configuration.file.YamlConfiguration;
 import org.bukkit.entity.Player;

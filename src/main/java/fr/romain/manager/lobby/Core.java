@@ -1,12 +1,19 @@
 package fr.romain.manager.lobby;
 
+import fr.romain.manager.lobby.managers.PluginMessageManager;
+import org.bukkit.entity.Player;
 import org.bukkit.plugin.java.JavaPlugin;
 
 import java.io.File;
+import java.util.HashMap;
+import java.util.List;
 
 public final class Core extends JavaPlugin {
 
     private static File dataFolder;
+
+    public static HashMap<String, List<Player>> waitingLists = new HashMap<>();
+
     @Override
     public void onEnable() {
         saveDefaultConfig();
